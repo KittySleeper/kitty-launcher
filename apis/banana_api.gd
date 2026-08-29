@@ -6,7 +6,7 @@ signal search_complete
 func search_mods(search_term: String):
 	var http := HTTPRequest.new()
 	add_child(http)
-	
+
 	http.request_completed.connect(_on_search_completed)
 
 	var url = API_URL + 'Subfeed?_nPage=1&_csvModelInclusions=Mod&_sName=' + search_term.uri_encode()
@@ -51,13 +51,13 @@ func download_from_github(owner: String, repo: String, tag: String, package_name
 	file_request.set_download_file(zip_path)
 	file_request.request_completed.connect(_on_download_completed)
 	file_request.request(url)
-	
+
 func download_from_gamebanana(id: String) -> void:
 	# https://gamebanana.com/apiv11/Mod/id/DownloadPage
 	var download_links = HTTPRequest.new()
-	download_links.set_tls_options(TLSOptions.client_unsafe())
+	download_links.set_tls_options(TLSOptions.client())
 	add_child(download_links)
-	
+
 	download_links.request_completed.connect(
 		func download_links_gotten(	result: int,
 		response_code: int,
@@ -69,29 +69,30 @@ func download_from_gamebanana(id: String) -> void:
 				return
 
 			var data = JSON.parse_string(body.get_string_from_utf8())
-			
+
 			print(data)
 
 			if data == null:
 				print("Failed to parse JSON")
 				return
-								
+
 			zip_path = "user://" + data._aFiles[0]._sFile
 			extract_dir = "user://PsychEngine/mods/"
-			
-			var url = "https://gamebanana.com/dl/" + str(int(data._aFiles[0]._idRow))
-			
+
+			var url = str(data._aFiles[0]._sDownloadUrl)
+			print("downloading mod from path " + url)
+
 			file_request = HTTPRequest.new()
-			file_request.set_tls_options(TLSOptions.client_unsafe())
+			file_request.set_tls_options(TLSOptions.client())
 			add_child(file_request)
 
 			file_request.set_download_file(zip_path)
 			file_request.request_completed.connect(_on_download_completed)
 			file_request.request(url)
 	)
-		
+
 	download_links.request("https://gamebanana.com/apiv11/Mod/" + id + "/DownloadPage")
-	
+
 func _process(_delta: float) -> void:
 	if is_instance_valid(file_request) and file_request.get_http_client_status() == HTTPClient.STATUS_BODY:
 		downloaded = file_request.get_downloaded_bytes()

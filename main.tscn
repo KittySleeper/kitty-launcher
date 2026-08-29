@@ -19,57 +19,76 @@ subpixel_positioning = 0
 font = SubResource("SystemFont_yf5fn")
 font_size = 35
 
-[node name="Main" type="Node2D" unique_id=1535098629]
+[node name="Main" type="Control" unique_id=2040149697]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ig7tw")
 
 [node name="GameBananaAPI" type="Node" parent="." unique_id=1630660089]
 script = ExtResource("2_0xm2m")
 metadata/_custom_type_script = "uid://de1tqkq3ybgcv"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1120443706]
-
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer" unique_id=604372516]
-offset_right = 1280.0
+[node name="LineEdit" type="LineEdit" parent="." unique_id=604372516]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
 offset_bottom = 72.0
 theme = SubResource("Theme_yf5fn")
 placeholder_text = "Search For Mods!"
 alignment = 1
 
-[node name="VScrollBar" type="VScrollBar" parent="CanvasLayer" unique_id=2027133937]
-offset_left = 1258.0
-offset_top = 80.0
-offset_right = 1278.0
-offset_bottom = 720.0
-max_value = 500.0
-
-[node name="engines" type="ColorRect" parent="CanvasLayer" unique_id=946434268]
+[node name="engines" type="ColorRect" parent="." unique_id=946434268]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
 offset_top = 66.0
 offset_right = 70.0
-offset_bottom = 720.0
 color = Color(0.05882353, 0.05882353, 0.05882353, 1)
 
-[node name="psych" type="Sprite2D" parent="CanvasLayer/engines" unique_id=1983540416]
+[node name="psych" type="Sprite2D" parent="engines" unique_id=1983540416]
 position = Vector2(34.999992, 45)
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("3_h2yge")
 
-[node name="downloadshit" type="ColorRect" parent="CanvasLayer" unique_id=146816408]
-offset_top = 670.0
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="downloadshit" type="ColorRect" parent="." unique_id=146816408]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
 color = Color(0.05882353, 0.05882353, 0.05882353, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer/downloadshit" unique_id=1160379733]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 50.0
+[node name="Label" type="Label" parent="downloadshit" unique_id=1160379733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "meow"
 label_settings = SubResource("LabelSettings_g4v7s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2012374803]
-position = Vector2(640, 360)
-position_smoothing_enabled = true
+[node name="ModScrollContainer" type="ScrollContainer" parent="." unique_id=466116602]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 74.0
+offset_bottom = -50.0
 
-[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="search_mod"]
+[node name="ModContainer" type="FlowContainer" parent="ModScrollContainer" unique_id=1473139074]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[connection signal="text_submitted" from="LineEdit" to="." method="search_mod"]

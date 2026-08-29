@@ -7,29 +7,51 @@ size = Vector2(500, 300)
 
 [sub_resource type="SystemFont" id="SystemFont_yf5fn"]
 font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font = SubResource("SystemFont_yf5fn")
 font_size = 25
 
-[node name="Widemod" type="Node2D" unique_id=1054205472]
+[node name="WideMod" type="Control" unique_id=536284744 node_paths=PackedStringArray("bg_image")]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_mcq43")
+bg_image = NodePath("BGImage")
 
-[node name="bg" type="Sprite2D" parent="." unique_id=2032300286]
+[node name="BGImage" type="TextureRect" parent="." unique_id=948053056]
+unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(250, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_yf5fn")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="name_bg" type="ColorRect" parent="." unique_id=328545891]
-offset_top = 260.0
-offset_right = 500.0
-offset_bottom = 300.0
-color = Color(0.14117648, 0.14117648, 0.14117648, 0.7058824)
+[node name="ModBG" type="ColorRect" parent="." unique_id=328545891]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.7058824)
 
-[node name="mod_name" type="Label" parent="." unique_id=92069352]
-offset_top = 260.0
-offset_right = 500.0
-offset_bottom = 300.0
+[node name="ModName" type="Label" parent="ModBG" unique_id=92069352]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "TBD"
 label_settings = SubResource("LabelSettings_g4v7s")
 horizontal_alignment = 1
