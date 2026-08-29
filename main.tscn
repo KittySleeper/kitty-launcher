@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://yca6ec7w6pbr"]
+
+[ext_resource type="Script" uid="uid://becx5p37dnqtc" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://de1tqkq3ybgcv" path="res://apis/banana_api.gd" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://d0pj2pao06wi5" path="res://engine_icons/256x256.png" id="3_h2yge"]
+
+[sub_resource type="SystemFont" id="SystemFont_d0u6y"]
+font_names = PackedStringArray("Comic Sans MS")
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_yf5fn"]
+default_font = SubResource("SystemFont_d0u6y")
+default_font_size = 30
+
+[sub_resource type="SystemFont" id="SystemFont_yf5fn"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = SubResource("SystemFont_yf5fn")
+font_size = 35
+
+[node name="Main" type="Node2D" unique_id=1535098629]
+script = ExtResource("1_ig7tw")
+
+[node name="GameBananaAPI" type="Node" parent="." unique_id=1630660089]
+script = ExtResource("2_0xm2m")
+metadata/_custom_type_script = "uid://de1tqkq3ybgcv"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1120443706]
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer" unique_id=604372516]
+offset_right = 1280.0
+offset_bottom = 72.0
+theme = SubResource("Theme_yf5fn")
+placeholder_text = "Search For Mods!"
+alignment = 1
+
+[node name="VScrollBar" type="VScrollBar" parent="CanvasLayer" unique_id=2027133937]
+offset_left = 1258.0
+offset_top = 80.0
+offset_right = 1278.0
+offset_bottom = 720.0
+max_value = 500.0
+
+[node name="engines" type="ColorRect" parent="CanvasLayer" unique_id=946434268]
+offset_top = 66.0
+offset_right = 70.0
+offset_bottom = 720.0
+color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[node name="psych" type="Sprite2D" parent="CanvasLayer/engines" unique_id=1983540416]
+position = Vector2(34.999992, 45)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("3_h2yge")
+
+[node name="downloadshit" type="ColorRect" parent="CanvasLayer" unique_id=146816408]
+offset_top = 670.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/downloadshit" unique_id=1160379733]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 50.0
+text = "meow"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2012374803]
+position = Vector2(640, 360)
+position_smoothing_enabled = true
+
+[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="search_mod"]

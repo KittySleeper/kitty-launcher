@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://crlo3c1jhu1es"]
+
+[ext_resource type="Script" uid="uid://hec62c7verqp" path="res://mod_types/widemod.gd" id="1_mcq43"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yf5fn"]
+size = Vector2(500, 300)
+
+[sub_resource type="SystemFont" id="SystemFont_yf5fn"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = SubResource("SystemFont_yf5fn")
+font_size = 25
+
+[node name="Widemod" type="Node2D" unique_id=1054205472]
+script = ExtResource("1_mcq43")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=2032300286]
+texture_filter = 1
+position = Vector2(250, 150)
+texture = SubResource("PlaceholderTexture2D_yf5fn")
+
+[node name="name_bg" type="ColorRect" parent="." unique_id=328545891]
+offset_top = 260.0
+offset_right = 500.0
+offset_bottom = 300.0
+color = Color(0.14117648, 0.14117648, 0.14117648, 0.7058824)
+
+[node name="mod_name" type="Label" parent="." unique_id=92069352]
+offset_top = 260.0
+offset_right = 500.0
+offset_bottom = 300.0
+text = "TBD"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
