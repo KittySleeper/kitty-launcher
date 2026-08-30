@@ -70,8 +70,6 @@ func download_from_gamebanana(id: String) -> void:
 
 			var data = JSON.parse_string(body.get_string_from_utf8())
 
-			print(data)
-
 			if data == null:
 				print("Failed to parse JSON")
 				return
